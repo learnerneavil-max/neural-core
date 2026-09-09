@@ -14,6 +14,7 @@ body {
     align-items: center;
     min-height: 100vh;
     overflow: hidden;
+    user-select: none; /* Prevent text selection during click spams */
 }
 
 /* --- Game Container --- */
@@ -25,36 +26,64 @@ body {
     padding: 20px;
     border: 1px solid #30363d;
     border-radius: 8px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.9);
+    width: 440px; /* Accommodate larger elements */
 }
 
 header {
-    text-align: center;
-    margin-bottom: 15px;
+    text-align: left;
+    margin-bottom: 20px;
     width: 100%;
 }
 
 h1 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     color: #58a6ff;
     margin-bottom: 10px;
-    text-shadow: 0 0 5px rgba(88, 166, 255, 0.5);
+    text-shadow: 0 0 8px rgba(88, 166, 255, 0.6);
     letter-spacing: 2px;
+    border-bottom: 2px solid #58a6ff;
+    padding-bottom: 5px;
 }
 
-#status {
-    height: 20px; /* Fixed height so layout doesn't jump */
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: color 0.3s ease;
+/* Real-time Status Log */
+.hub {
+    margin-bottom: 10px;
 }
+#statusLog {
+    height: 60px; /* Fixed height with scrolling */
+    background-color: #0d1117;
+    border: 1px solid #30363d;
+    padding: 5px;
+    font-size: 0.8rem;
+    color: #c9d1d9;
+    overflow-y: scroll;
+    scrollbar-width: thin; /* Firefox scrollbar */
+}
+#statusLog::-webkit-scrollbar { width: 5px; } /* Webkit scrollbar */
+#statusLog::-webkit-scrollbar-thumb { background: #30363d; border-radius: 2px; }
+
+/* Status text coloring */
+#statusLog p { margin-bottom: 2px; text-transform: uppercase;}
+.success { color: #2ea043 !important; text-shadow: 0 0 5px rgba(46, 160, 67, 0.5); }
+.error { color: #f85149 !important; text-shadow: 0 0 5px rgba(248, 81, 73, 0.5); }
+
+/* HUD stats line */
+.stats {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    color: #fff;
+    font-weight: bold;
+}
+.stats span { font-weight: bold; color: #ffb700; text-shadow: 0 0 3px rgba(255, 183, 0, 0.5);}
 
 /* --- Canvas --- */
 canvas {
     background-color: #0d1117;
     border: 2px solid #30363d;
     border-radius: 4px;
-    cursor: crosshair; /* Hacker target cursor */
+    cursor: crosshair;
     box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
 }
 
@@ -88,15 +117,4 @@ button:hover {
 
 button:active {
     transform: scale(0.95);
-}
-
-/* Success/Error text states (handled partially by JS, but good to have rules just in case) */
-.success {
-    color: #2ea043 !important;
-    text-shadow: 0 0 8px rgba(46, 160, 67, 0.6);
-}
-
-.error {
-    color: #f85149 !important;
-    text-shadow: 0 0 8px rgba(248, 81, 73, 0.6);
 }
