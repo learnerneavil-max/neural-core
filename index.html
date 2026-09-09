@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neural_Link // Uplink</title>
+    <title>Neural_Link // Uplink v2.1 (Expanded)</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,10 +11,16 @@
     <div class="game-container">
         <header>
             <h1>NEURAL_LINK // UPLINK</h1>
-            <p id="status">System Standby...</p>
+            <div class="hub">
+                <p>STATUS:</p>
+                <div id="statusLog"></div>
+            </div>
+            <div class="stats">
+                <p>POWER: <span id="powerVal">--</span> / BREACH SCORE: <span id="scoreVal">--</span></p>
+            </div>
         </header>
 
-        <!-- Canvas dimensions set to accommodate the node coordinates from game.js -->
+        <!-- Use slightly larger dimensions for complex levels -->
         <canvas id="gameCanvas" width="400" height="500"></canvas>
 
         <div class="controls">
