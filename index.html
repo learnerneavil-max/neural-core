@@ -3,17 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neural Core</title>
+    <title>Neural_Link // Uplink</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="game-container">
-        <h1>NEURAL CORE</h1>
-        <p id="instruction">Route the signal from INPUT to OUTPUT by activating the hidden layers.</p>
+
+    <div class="game-container">
+        <header>
+            <h1>NEURAL_LINK // UPLINK</h1>
+            <p id="status">System Standby...</p>
+        </header>
+
+        <!-- Canvas dimensions set to accommodate the node coordinates from game.js -->
         <canvas id="gameCanvas" width="400" height="500"></canvas>
-        <p id="status">System Standby...</p>
-        <button id="resetBtn">Reset Sequence</button>
+
+        <div class="controls">
+            <button id="resetBtn">RESET_SYSTEM()</button>
+        </div>
     </div>
+
     <script src="game.js"></script>
 </body>
 </html>
