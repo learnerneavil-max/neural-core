@@ -1,65 +1,102 @@
+/* --- Base Styles --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    background-color: #0d1117;
-    color: #c9d1d9;
+    background-color: #0d1117; /* Dark background */
+    color: #c9d1d9; /* Light text */
     font-family: 'Courier New', Courier, monospace;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    margin: 0;
+    min-height: 100vh;
+    overflow: hidden;
 }
 
-#game-container {
-    text-align: center;
+/* --- Game Container --- */
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background: #161b22;
-    padding: 20px 40px;
-    border-radius: 10px;
+    padding: 20px;
     border: 1px solid #30363d;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 15px;
+    width: 100%;
 }
 
 h1 {
+    font-size: 1.5rem;
     color: #58a6ff;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    text-shadow: 0 0 5px rgba(88, 166, 255, 0.5);
     letter-spacing: 2px;
 }
 
-#instruction {
-    font-size: 14px;
-    color: #8b949e;
-    margin-bottom: 20px;
-}
-
-canvas {
-    background-color: #010409;
-    border: 1px solid #30363d;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
 #status {
-    margin-top: 20px;
+    height: 20px; /* Fixed height so layout doesn't jump */
     font-weight: bold;
-    height: 20px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
 }
 
-.success {
-    color: #2ea043;
+/* --- Canvas --- */
+canvas {
+    background-color: #0d1117;
+    border: 2px solid #30363d;
+    border-radius: 4px;
+    cursor: crosshair; /* Hacker target cursor */
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.8);
+}
+
+/* --- Controls --- */
+.controls {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 button {
-    margin-top: 15px;
-    background-color: #21262d;
+    background-color: transparent;
     color: #c9d1d9;
-    border: 1px solid #30363d;
-    padding: 8px 16px;
-    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    font-weight: bold;
+    border: 1px solid #c9d1d9;
+    padding: 10px 20px;
+    border-radius: 4px;
     cursor: pointer;
-    font-family: inherit;
-    transition: 0.2s;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
 }
 
 button:hover {
-    background-color: #30363d;
-    border-color: #8b949e;
+    color: #0d1117;
+    background-color: #c9d1d9;
+    box-shadow: 0 0 10px rgba(201, 209, 217, 0.6);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* Success/Error text states (handled partially by JS, but good to have rules just in case) */
+.success {
+    color: #2ea043 !important;
+    text-shadow: 0 0 8px rgba(46, 160, 67, 0.6);
+}
+
+.error {
+    color: #f85149 !important;
+    text-shadow: 0 0 8px rgba(248, 81, 73, 0.6);
 }
